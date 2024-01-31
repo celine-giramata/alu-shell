@@ -1,2 +1,2 @@
 #!/bin/bash
-printf -v RESULT_BESTCHOL "%X" "$((16#$WATER + 16#$STIR))"
+printf "%X" "$((16#$WATER + 16#$STIR))"
