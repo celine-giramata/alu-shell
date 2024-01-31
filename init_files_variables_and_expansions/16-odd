@@ -1,2 +1,2 @@
 #!/bin/bash
-pastc -d, - - | cut -d, -f1
+sed -n '1~2p'
