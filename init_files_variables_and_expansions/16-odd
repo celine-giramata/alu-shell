@@ -1,0 +1,2 @@
+#!/bin/bash
+pastc -d, - - | cut -d, -f1
