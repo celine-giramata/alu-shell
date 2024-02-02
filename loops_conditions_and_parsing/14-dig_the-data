@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
-#groups visitors by IP and HTTP status code, and displays this data
-awk '{print $1, $9}' apache-access.log
+# Assuming your log file is named 'apache.log'
+log_file="apache.log"
+
+# Use awk to parse and format the data
+awk '{print $1, $9}' "$log_file" | sort | uniq -c | awk '{print $1, $2, $3}' | sort -nr
