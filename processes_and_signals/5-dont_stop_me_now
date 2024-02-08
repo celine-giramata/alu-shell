@@ -1,41 +1,4 @@
 #!/usr/bin/env bash
-#display
+#killing some infinite loop process
 
-PIDFILE="/var/run/myscript.pid"
-
-# Function to handle cleanup
-cleanup() {
-    echo "Cleaning up and exiting..."
-    rm -f "$PIDFILE"
-    exit 0
-}
-
-# Function to handle SIGINT signal
-handle_sigint() {
-    echo "Y U no love me?!"
-}
-
-# Function to handle SIGTERM signal
-handle_sigterm() {
-    echo "I hate the kill command"
-}
-
-# Trap signals
-trap 'cleanup' EXIT
-trap 'handle_sigint' SIGINT
-trap 'handle_sigterm' SIGTERM
-
-# Check if PID file exists
-if [ -f "$PIDFILE" ]; then
-    echo "PID file $PIDFILE already exists. Exiting."
-    exit 1
-fi
-
-# Create PID file
-echo $$ > "$PIDFILE"
-
-# Display message indefinitely
-echo "Don't stop me now!"
-while true; do
-    sleep 1
-done
+kill "$(ps -x|pgrep -f infinity)"
